@@ -11,7 +11,7 @@ import static com.thoughtworks.marsrover.hanndler.DirectionType.findByValue;
 public class Rovers {
     private int x;
     private int y;
-    private String direction;
+    private DirectionType direction;
     private boolean init = false;
     private Map<DirectionType, RoversHandler> map;
 
@@ -31,7 +31,7 @@ public class Rovers {
         if (directionType == null) {
             throw new RuntimeException("Do not find direction by value: " + direction);
         }
-        this.direction = directionType.getValue();
+        this.direction = directionType;
         init = true;
 
     }
@@ -54,23 +54,23 @@ public class Rovers {
     }
 
     private RoversHandler getHandler() {
-        return map.get(findByValue(this.direction));
+        return map.get(direction);
     }
 
     public void setDirectionIsEast() {
-        this.direction = EAST.getValue();
+        this.direction = EAST;
     }
 
     public void setDirectionIsSouth() {
-        this.direction = SOUTH.getValue();
+        this.direction = SOUTH;
     }
 
     public void setDirectionIsWest() {
-        this.direction = WEST.getValue();
+        this.direction = WEST;
     }
 
     public void setDirectionIsNorth() {
-        this.direction = NORTH.getValue();
+        this.direction = NORTH;
     }
 
     public void moveToEast(int distance) {
