@@ -1,8 +1,10 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.command.Command;
 import com.thoughtworks.marsrover.hanndler.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.thoughtworks.marsrover.hanndler.DirectionType.*;
@@ -87,5 +89,16 @@ public class Rovers {
 
     public void moveToNorth(int distance) {
         this.y += distance;
+    }
+
+    public void acceptCommand(List<Command> commands) {
+        for (Command command : commands) {
+            executCommand(command);
+        }
+
+    }
+
+    private void executCommand(Command command) {
+        command.execute(this);
     }
 }
