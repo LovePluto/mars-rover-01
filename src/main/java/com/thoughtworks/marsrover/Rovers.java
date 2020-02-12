@@ -18,12 +18,16 @@ public class Rovers {
     private Map<DirectionType, RoversHandler> map;
 
 
-    public Rovers() {
+    private Rovers() {
         map = new HashMap<>();
         map.put(EAST, new EastRoversHandler(this));
         map.put(SOUTH, new SouthRoversHandler(this));
         map.put(WEST, new WestRoversHandler(this));
         map.put(NORTH, new NorthRoversHandler(this));
+    }
+
+    public static Rovers createRovers() {
+        return new Rovers();
     }
 
     public void init(int x, int y, String direction) {
@@ -93,12 +97,12 @@ public class Rovers {
 
     public void acceptCommand(List<Command> commands) {
         for (Command command : commands) {
-            executCommand(command);
+            executeCommand(command);
         }
 
     }
 
-    private void executCommand(Command command) {
+    private void executeCommand(Command command) {
         command.execute(this);
     }
 }
