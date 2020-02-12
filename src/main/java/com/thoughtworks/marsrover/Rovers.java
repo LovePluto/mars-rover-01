@@ -105,4 +105,9 @@ public class Rovers {
     private void executeCommand(Command command) {
         command.execute(this);
     }
+
+    public void outCurrentLocation() {
+        System.out.println(String.format("火星车当前位置是：%s %s %s",
+                this.x, this.y, this.direction.getValue()));
+    }
 }
